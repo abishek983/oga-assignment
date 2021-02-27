@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Home Page</title>
+
+    <style type="text/css" media="screen">
+        body {
+            background-color: skyblue;
+            text-decoration-color: white;
+            font-size: 7em;
+        }
+
+        input {
+            margin: auto;
+        }
+
+        h6 {
+            text-align: center;
+            font-size: 12px;
+        }
+    </style>
+</head>
+
+<body>
+    <h3 id="go-to-server"></h3>
+    <div id="screen">
+        <center>Please Enter <%=character%>
+        </center>
+        <h3>
+            Score is <%=score%>
+        </h3>
+        <h3>
+            Life <%=life%>
+        </h3>
+        <h3 id="data">
+            Answer in 5 Seconds
+        </h3>
+        <center>
+            <form action="/" method="post" id="form">
+                <input type="text" name="userInput" placeholder="Enter character">
+                <button type="submit" name="submit">
+                    Submit
+                </button>
+            </form>
+        </center>
+    </div>
+    <h3 id="server"></h3>
+    <script>
+        let time = 5
+
+        setTimeout(() => {
+            const myobj = document.getElementById("screen");
+            myobj.remove();
+            const newObj = document.getElementById("go-to-server");
+            newObj.innerHTML = "Server Is waiting for response"
+
+            //making post call if user does't responds in 3 seconds
+            fetch('/', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({ "userInput": "no-data" })
+            })
+            location.reload()
+        }, 5000);
+        const timer = setInterval(() => {
+            if (time <= 0)
+                clearInterval(timer)
+            const serverObj = document.getElementById("data")
+            serverObj.innerHTML = `Answer in ${time} sec`
+            time--;
+        }, 1000)
+    </script>
+</body>
+
+</html>
