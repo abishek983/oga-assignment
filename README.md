@@ -2,7 +2,8 @@
 
 Instructions to run the program
 
-1.Install python in your system
-2.Go to the folder where the file "follow_me_like_game.py" file is
-3.run the command "python follow_me_like_game.py" without inverted commas.
+1.clone the repository
+2.Install node and npm if not already installed.
+3.Open then folder and run npm i to install all the dependencies.
+4.run the command "node index.js" without inverted commas.
 4.Play the game
