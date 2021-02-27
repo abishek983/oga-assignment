@@ -1,4 +1,4 @@
-# ogo-assignment
+# oga-assignment
 
 Instructions to run the program
 
